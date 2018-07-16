@@ -12,37 +12,35 @@
 
 <body>
 	<h1>Using a public data set, we are creating a map with markers</h1>
-		<div id="map"></div>
+		<div id="map" style="width: 640px !important; height: 480px !important;"></div>
 </body>
 <script type="text/javascript">
 	
 	$(window).load( function() {
 	url='https://data.cityofnewyork.us/resource/9w7m-hzhe.json';
-	var center = new google.maps.LatLng(40.7128,74.0060);
+	var center = new google.maps.LatLng(40.7128,-74.0060);
 	var mapOptions = {
 		  zoom: 8,
 		  center: center
 	}
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions) ; 
-var geoCoder = new google.maps.Geocoder();
+	var geoCoder = new google.maps.Geocoder();
 
-$.getJSON(url, function(data, textstatus) {
-$.each(data, function(i, entry){
-	var address = entry.building+ "" +entry.street+ "" +entry.boro+ "" +entry.zipcode;
-	geoCoder.geocode({'address':address}, function (result, status) {
-	if (status === "OK") {
-	var marker = new google.maps. Marker ({
-	position: result[0].geometry.location,  
-	map: map,
-	title: entry.dba
-});
-}
+	$.getJSON(url, function(data, textstatus) {
+		$.each(data, function(i, entry){
+			var address = entry.building+ "" +entry.street+ "" +entry.boro+ "" +entry.zipcode;
+			geoCoder.geocode({'address':address}, function (result, status) {
+				if (status === "OK") {
+					var marker = new google.maps. Marker ({
+					position: result[0].geometry.location,  
+					map: map,
+					title: entry.dba
+				});
+				}
+			});
+		});
 	});
-});
-});
 });
 
 </script>
-
-
-	</html>
+</html>
