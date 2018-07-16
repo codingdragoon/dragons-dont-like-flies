@@ -26,7 +26,7 @@
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions) ; 
 var geoCoder = new google.maps.Geocoder();
 
-$.getJSON(url, function(data, textstatus)) {
+$.getJSON(url, function(data, textstatus) {
 $.each(data, function(i, entry){
 	var address = entry.building+ "" +entry.street+ "" +entry.boro+ "" +entry.zipcode;
 	geoCoder.geocode({'address':address}, function (result, status) {
