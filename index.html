@@ -13,9 +13,17 @@
 <body>
 	<h1>Using a public data set, we are creating a map with markers</h1>
 		<div id="map" style="width: 640px !important; height: 480px !important;"></div>
+		<button onclick="myFunction()"> Submit </button>
 </body>
 <script type="text/javascript">
 	
+<input type= "text" placeholder= "Type in an Address">
+//...whut
+
+	function myFunction() {
+    document.body.style.backgroundColor = "yellow";
+}
+
 	$(window).load( function() {
 	url='https://data.cityofnewyork.us/resource/9w7m-hzhe.json';
 	var center = new google.maps.LatLng(40.7128,-74.0060);
@@ -42,5 +50,7 @@
 	});
 });
 
+(function()
+
 </script>
-</html>
+</html> 
